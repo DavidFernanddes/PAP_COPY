@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pap_copy/core/navigation/app_router.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -81,7 +82,12 @@ class LoginState extends State<Login> {
                 SizedBox(
                   width: double.infinity,
                   child: FilledButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(
+                        context,
+                        AppRoutes.userMenu,
+                      );
+                    },
                     style: FilledButton.styleFrom(
                       backgroundColor: Colors.lightBlue,
                     ),
