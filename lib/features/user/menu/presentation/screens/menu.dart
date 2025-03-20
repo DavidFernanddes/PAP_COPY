@@ -1,3 +1,4 @@
+import 'package:barcode_scan2/barcode_scan2.dart';
 import 'package:flutter/material.dart';
 import 'package:pap_copy/core/navigation/app_router.dart';
 
@@ -20,7 +21,16 @@ class UserMenu extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               FilledButton(
-                onPressed: () {},
+                onPressed: () async {
+                  ScanResult result = await BarcodeScanner.scan();
+
+                  if (result.rawContent.isNotEmpty) {
+                    // Handle the scanned barcode result
+                    print('Scanned barcode: ${result.rawContent}');
+                  } else {
+                    print('No barcode scanned or scan was cancelled');
+                  }
+                },
                 style: FilledButton.styleFrom(
                   backgroundColor: Colors.lightBlue,
                   foregroundColor: Colors.white,
